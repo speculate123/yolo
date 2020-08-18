@@ -61,6 +61,7 @@ def YOLO():
         detections = darknet.detect_image(netMain, metaMain, darknet_image, thresh=0.25)
         resizecoordinate(detections, darknet.network_width(netMain), darknet.network_height(netMain), width, height)
         text = countclass(detections)
+        #cv2.putText(frame, text, (10, 40), cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 0), 1)
         image = cvDrawBoxes(detections, frame_read, text, height, width)        
         convert = cv2.imencode('.jpg',image)[1].tobytes()
         # _, buffer = cv2.imencode('.jpg',image)
